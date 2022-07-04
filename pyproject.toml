@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "tftimeline"
+version = "0.1.0"
+description = "Terraform Apply timeline visualisation tool"
+authors = ["Daniel Loader"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7.1"
+plotly = "^5.9.0"
+kaleido = "0.2.1"
+pandas = "1.3"
+typer = "^0.4.2"
+
+[tool.poetry.dev-dependencies]
+black = "^22.6.0"
+flake8 = "^4.0.1"
+
+[tool.poetry.scripts]
+tftimeline = 'tftimeline.main:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
