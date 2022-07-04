@@ -17,7 +17,7 @@ black = "^22.6.0"
 flake8 = "^4.0.1"
 
 [tool.poetry.scripts]
-tftimeline = 'tftimeline.main:main'
+tftimeline = 'tftimeline.main:app'
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

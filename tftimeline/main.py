@@ -4,7 +4,9 @@ import typer
 from typing import Optional
 
 
+app = typer.Typer()
 
+@app.command()
 def main(
     output_path: Optional[str] = typer.Option(None, help="Filepath to write timeline to."),
     output_type: Optional[OutputTypes] = typer.Option(OutputTypes.html, help="File type to write.")
@@ -12,5 +14,3 @@ def main(
     logs = LogParser()
     logs.plot(output_path, output_type)
 
-if __name__ == "__main__":
-    typer.run(main)
