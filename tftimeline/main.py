@@ -9,8 +9,10 @@ app = typer.Typer()
 @app.command()
 def main(
     output_path: Optional[str] = typer.Option(None, help="Filepath to write timeline to."),
-    output_type: Optional[OutputTypes] = typer.Option(OutputTypes.html, help="File type to write.")
+    output_type: Optional[OutputTypes] = typer.Option(OutputTypes.html, help="File type to write."),
+    height: Optional[int] = typer.Option(1200, help="Height in pixel equivilent for image rendering."),
+    width: Optional[int] = typer.Option(1600, help="Height in pixel equivilent for image rendering.")
     ):
     logs = LogParser()
-    logs.plot(output_path, output_type)
+    logs.plot(output_path, output_type, height, width)
 
