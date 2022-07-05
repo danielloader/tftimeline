@@ -16,3 +16,6 @@ def main(
     logs = LogParser()
     logs.plot(output_path, output_type, height, width)
 
+
+if __name__ == "__main__":
+    app()

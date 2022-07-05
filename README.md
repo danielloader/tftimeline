@@ -30,3 +30,14 @@ cat terraform-apply.log | tftimeline --output-type html --output-file timeline.h
 
 Use of this tool without any flags will default to loading the timeline as a html document on localhost, and triggering a browser open to display it.
 
+## Docker
+
+You can also build the provided `Dockerfile` and run the application in a container:
+
+```sh
+docker build -t tftimeline:latest .
+cat log.jsonl | docker run --rm -i -v $PWD:/output tftimeline:latest --output-path /output/index.html
+```
+
+Logs are still processed via stdin, so the `-i` flag is mandatory when running this container. 
+Volume mount is needed to write out the exported graph.
