@@ -13,7 +13,7 @@ from tftimeline.models import OutputTypes
 class InfrastructureResource:
     def __init__(self, log: dict):
         self.raw: dict = log
-        self.id: str = log["hook"]["id_value"]
+        # self.id: str = log["hook"]["id_value"]
         self.resource_name: str = log["hook"]["resource"]["resource_name"]
         self.resource_type: str = log["hook"]["resource"]["resource_type"]
         self.resource: str = log["hook"]["resource"]["resource"]
@@ -52,11 +52,13 @@ class LogParser:
             log_dict: dict = json.loads(line)
             if log_dict.get("type") == "apply_complete":
                 yield InfrastructureResource(log_dict)
+            if log_dict.get("type") == "destroy_complete":
+                yield InfrastructureResource(log_dict)
 
     def plot(self, filepath: str = None, filetype: OutputTypes = None):
         fig = px.timeline(
             self.dataframes,
-            title="Terraform Apply Timeline",
+            title="Terraform Timeline",
             x_start="Start",
             x_end="Finish",
             y="Name",
